@@ -18,10 +18,22 @@ public class Marks {
     @GenericGenerator(name="uuid",strategy = "uuid2")
     @Column(name = Marks.ID_COLUMN)
     private String marksId;
+    @ManyToOne
     private Student student;
+    @ManyToOne()
+    @JoinColumn(name = "subject_id")
     private Subject subject;
     private int marks;
 
+    public Marks() {
+    }
+
+    public Marks(String marksId, Student student, Subject subject, int marks) {
+        this.marksId = marksId;
+        this.student = student;
+        this.subject = subject;
+        this.marks = marks;
+    }
 
     public String getMarksId() {
         return marksId;
@@ -54,6 +66,7 @@ public class Marks {
     public void setMarks(int marks) {
         this.marks = marks;
     }
+
 
     @Override
     public String toString() {

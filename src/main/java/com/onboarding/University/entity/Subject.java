@@ -3,25 +3,44 @@ package com.onboarding.University.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = Subject.TABLE_NAME)
-
 public class Subject {
 
-    public static final String TABLE_NAME="SUBJECT";
-    private static final String ID_COLUMN="ID";
-
-
-
     @Id
-    @GeneratedValue(generator ="uuid")                 // hibernate
-    @GenericGenerator( name="uuid", strategy = "uuid2")  //hibernate
-    @Column(name =Subject.ID_COLUMN)
+    @GeneratedValue(generator = "uuid")                 // hibernate
+    @GenericGenerator(name = "uuid", strategy = "uuid2")  //hibernate
     private String subjectId;
     private String  subjectName;
-    private Department departmentId;
-    private Professor professorId;
+    @ManyToOne
+    private Department department;
+    @ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+    @OneToMany(
+            mappedBy = "subject"
+    )
+    private List<Marks> marks;
+
+    public Subject() {
+    }
+
+    public Subject(String subjectId, String subjectName, Department department, Professor professor, List<Marks> marks) {
+        this.subjectId = subjectId;
+        this.subjectName = subjectName;
+        this.department = department;
+        this.professor = professor;
+        this.marks = marks;
+    }
+
+    public List<Marks> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Marks> marks) {
+        this.marks = marks;
+    }
 
     public String getSubjectId() {
         return subjectId;
@@ -39,19 +58,19 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
-    public Department getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(Department departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public Professor getProfessorId() {
-        return professorId;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setProfessorId(Professor professorId) {
-        this.professorId = professorId;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }
