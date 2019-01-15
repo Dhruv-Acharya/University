@@ -24,6 +24,8 @@ public class Student {
 
     private String studentId;
     private String studentName;
+    private Department department;
+    private String semester;
 
     public String getStudentId() {
         return studentId;
@@ -57,7 +59,7 @@ public class Student {
         this.department = department;
     }
 
-    private String semester;
-    private Department department;
+
+
 
 }
