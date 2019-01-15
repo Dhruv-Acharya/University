@@ -1,12 +1,10 @@
 package com.onboarding.University.entity;
 
 import org.hibernate.annotations.GenericGenerator;
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name=Student.TABLE_NAME)
@@ -24,6 +22,30 @@ public class Student {
 
     private String studentId;
     private String studentName;
+    private int semester;
+    @ManyToOne
+    private Department department;
+    @OneToMany
+    private List<Marks> marks;
+
+    public Student() {
+    }
+
+    public Student(String studentId, String studentName, int semester, Department department, List<Marks> marks) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.semester = semester;
+        this.department = department;
+        this.marks = marks;
+    }
+
+    public List<Marks> getMarks() {
+        return marks;
+    }
+
+    public void setMarks(List<Marks> marks) {
+        this.marks = marks;
+    }
 
     public String getStudentId() {
         return studentId;
@@ -41,11 +63,11 @@ public class Student {
         this.studentName = studentName;
     }
 
-    public String getSemester() {
+    public int getSemester() {
         return semester;
     }
 
-    public void setSemester(String semester) {
+    public void setSemester(int semester) {
         this.semester = semester;
     }
 
@@ -56,8 +78,5 @@ public class Student {
     public void setDepartment(Department department) {
         this.department = department;
     }
-
-    private String semester;
-    private Department department;
 
 }
