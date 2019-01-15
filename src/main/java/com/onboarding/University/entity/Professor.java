@@ -7,10 +7,10 @@ import javax.persistence.Table;
 import javax.security.auth.Subject;
 
 @Entity
-@Table(name = Professor.TABLE_NAME)
+@Table(name=Professor.TABLE_NAME)
 public class Professor {
 
-    private static final String TABLE_NAME = "Professor";
+    public static final String TABLE_NAME = "Professor";
 
     @Id
     private String professorId;
