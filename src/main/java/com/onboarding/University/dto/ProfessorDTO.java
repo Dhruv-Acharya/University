@@ -7,7 +7,7 @@ public class ProfessorDTO {
     private String professorName;
     private String primaryDepartment;
     private String secondaryDepartment;
-    private Subject subject;
+    private String subjectId;
 
     public String getProfessorId() {
         return professorId;
@@ -41,11 +41,11 @@ public class ProfessorDTO {
         this.secondaryDepartment = secondaryDepartment;
     }
 
-    public Subject getSubject() {
-        return subject;
+    public String getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSubjectId(String subjectId) {
+        this.subjectId = subjectId;
     }
 }

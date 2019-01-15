@@ -10,7 +10,7 @@ import javax.security.auth.Subject;
 @Table(name = Professor.TABLE_NAME)
 public class Professor {
 
-    private final String TABLE_NAME = "Professor";
+    private static final String TABLE_NAME = "Professor";
 
     @Id
     private String professorId;
