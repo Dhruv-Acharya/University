@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = Professor.TABLE_NAME)
+@Table(name=Professor.TABLE_NAME)
 public class Professor {
 
     public static final String TABLE_NAME = "Professor";
