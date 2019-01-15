@@ -1,23 +1,44 @@
 package com.onboarding.University.entity;
 
-import org.springframework.data.annotation.Id;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.security.auth.Subject;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = Professor.TABLE_NAME)
 public class Professor {
 
-    private final String TABLE_NAME = "Professor";
+    public static final String TABLE_NAME = "Professor";
 
     @Id
+    @GeneratedValue(generator = "uuid")                 // hibernate
+    @GenericGenerator(name = "uuid", strategy = "uuid2")  //hibernate
     private String professorId;
+    @NotNull
     private String professorName;
-    private String primaryDepartment;
-    private String secondaryDepartment;
-    private Subject subject;
+    @NotNull
+    @ManyToOne
+    private Department primaryDepartment;
+    @ManyToOne
+    private Department secondaryDepartment;
+
+    @OneToMany(
+            mappedBy = "professor"
+    )
+    private List<Subject> subject;
+
+    public Professor() {
+    }
+
+    public Professor(String professorId, String professorName, Department primaryDepartment, Department secondaryDepartment, List<Subject> subject) {
+        this.professorId = professorId;
+        this.professorName = professorName;
+        this.primaryDepartment = primaryDepartment;
+        this.secondaryDepartment = secondaryDepartment;
+        this.subject = subject;
+    }
 
     public String getProfessorId() {
         return professorId;
@@ -35,27 +56,27 @@ public class Professor {
         this.professorName = professorName;
     }
 
-    public String getPrimaryDepartment() {
+    public Department getPrimaryDepartment() {
         return primaryDepartment;
     }
 
-    public void setPrimaryDepartment(String primaryDepartment) {
+    public void setPrimaryDepartment(Department primaryDepartment) {
         this.primaryDepartment = primaryDepartment;
     }
 
-    public String getSecondaryDepartment() {
+    public Department getSecondaryDepartment() {
         return secondaryDepartment;
     }
 
-    public void setSecondaryDepartment(String secondaryDepartment) {
+    public void setSecondaryDepartment(Department secondaryDepartment) {
         this.secondaryDepartment = secondaryDepartment;
     }
 
-    public Subject getSubject() {
+    public List<Subject> getSubject() {
         return subject;
     }
 
-    public void setSubject(Subject subject) {
+    public void setSubject(List<Subject> subject) {
         this.subject = subject;
     }
 }
