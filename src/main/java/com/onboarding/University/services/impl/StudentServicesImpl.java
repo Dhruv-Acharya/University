@@ -1,6 +1,7 @@
 package com.onboarding.University.services.impl;
 
 import com.onboarding.University.entity.Student;
+import com.onboarding.University.repository.DepartmentRepository;
 import com.onboarding.University.repository.StudentRepository;
 import com.onboarding.University.services.StudentServices;
 import org.springframework.beans.factory.annotation.Autowired;
