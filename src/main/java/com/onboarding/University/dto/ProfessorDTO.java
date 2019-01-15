@@ -1,4 +1,6 @@
-package com.onboarding.University.entity;
+package com.onboarding.University.dto;
+
+import com.onboarding.University.entity.Subject;
 
 public class ProfessorDTO {
     private String professorId;
