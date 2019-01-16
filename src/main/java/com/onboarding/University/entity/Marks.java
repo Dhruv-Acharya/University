@@ -23,6 +23,7 @@ public class Marks {
     @ManyToOne()
     @JoinColumn(name = "subject_id")
     private Subject subject;
+    private int semester;
     private int marks;
 
     public Marks() {
