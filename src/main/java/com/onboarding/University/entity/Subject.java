@@ -6,7 +6,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name=Student.TABLE_NAME)
 public class Subject {
+    public static final String TABLE_NAME="SUBJECT";
 
     @Id
     @GeneratedValue(generator = "uuid")                 // hibernate

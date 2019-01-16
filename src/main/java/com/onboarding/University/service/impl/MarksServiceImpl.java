@@ -1,6 +1,7 @@
 package com.onboarding.University.service.impl;
 
 import com.onboarding.University.entity.Marks;
+import com.onboarding.University.entity.MarksIdentity;
 import com.onboarding.University.repository.MarksRepository;
 import com.onboarding.University.service.MarksService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,12 @@ public class MarksServiceImpl implements MarksService {
     }
 
     @Override
-    public Marks findOne(String id) {
+    public Marks findOne(MarksIdentity id) {
         return marksRepository.findOne(id);
     }
 
     @Override
-    public void delete(String id) {
+    public void delete(MarksIdentity id) {
         marksRepository.delete(id);
     }
 

@@ -23,14 +23,21 @@ public class MarksController {
         return new ResponseEntity<List<Marks>>(marksService.findAll(),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{marks_id}", method = RequestMethod.GET)
-    public ResponseEntity<Marks> getMarks(@PathVariable String marks_id){
-        return new ResponseEntity<Marks>(marksService.findOne(marks_id),HttpStatus.OK);
+    @RequestMapping(value = "/{student_id}/{subject_id}", method = RequestMethod.GET)
+    public ResponseEntity<Marks> getMarks(@PathVariable String student_id,@PathVariable String subject_id){
+        MarksIdentity marksIdentity= new MarksIdentity();
+        marksIdentity.setStudentId(student_id);
+        marksIdentity.setSubjectId(subject_id);
+        marksService.delete(marksIdentity);
+        return new ResponseEntity<Marks>(marksService.findOne(marksIdentity),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{marks_id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> removeMarks(@PathVariable String marks_id) {
-        marksService.delete(marks_id);
+    @RequestMapping(value = "/delete/{student_id}/{subject_id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> removeMarks(@PathVariable String student_id,@PathVariable String subject_id) {
+        MarksIdentity marksIdentity= new MarksIdentity();
+        marksIdentity.setStudentId(student_id);
+        marksIdentity.setSubjectId(subject_id);
+        marksService.delete(marksIdentity);
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
     }
 
