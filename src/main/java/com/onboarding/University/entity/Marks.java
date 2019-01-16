@@ -3,16 +3,19 @@ package com.onboarding.University.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = Marks.TABLE_NAME)
-public class Marks {
+public class Marks implements Serializable {
 
     public static final String TABLE_NAME = "Marks";
     public static final String ID_COLUMN = "ID";
 
+    @Id
     @EmbeddedId
     private MarksIdentity marksIdentity;
+
     private int semester;
     private int marks;
 
@@ -48,4 +51,5 @@ public class Marks {
     public void setSemester(int semester) {
         this.semester = semester;
     }
+
 }

@@ -14,9 +14,12 @@ public class Subject {
     @GeneratedValue(generator = "uuid")                 // hibernate
     @GenericGenerator(name = "uuid", strategy = "uuid2")  //hibernate
     private String subjectId;
+
     private String  subjectName;
+
     @ManyToOne
     private Department department;
+
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;

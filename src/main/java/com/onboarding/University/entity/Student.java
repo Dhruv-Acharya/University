@@ -1,30 +1,29 @@
 package com.onboarding.University.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name=Student.TABLE_NAME)
-
-
-
 public class Student {
+
     public static final String TABLE_NAME="STUDENT";
+
     private static final String ID_COLUMN="ID";
 
     @Id
     @GeneratedValue(generator ="uuid")                 // hibernate
     @GenericGenerator( name="uuid", strategy = "uuid2")  //hibernate
     @Column(name =Student.ID_COLUMN)
-
     private String studentId;
+
     private String studentName;
+
     private int semester;
+
     @ManyToOne
+    @JoinColumn(name="department_id", referencedColumnName = "ID")
     private Department department;
 //    @OneToMany
 //    @JsonBackReference
