@@ -5,19 +5,9 @@ import com.onboarding.University.entity.Professor;
 
 public class SubjectDTO {
     private String subjectId;
-    private String subjectName;
+    private String  subjectName;
     private String departmentId;
     private String professorId;
-
-    public SubjectDTO() {
-    }
-
-    public SubjectDTO(String subjectId, String subjectName, String departmentId, String professorId) {
-        this.subjectId = subjectId;
-        this.subjectName = subjectName;
-        this.departmentId = departmentId;
-        this.professorId = professorId;
-    }
 
     public String getSubjectId() {
         return subjectId;

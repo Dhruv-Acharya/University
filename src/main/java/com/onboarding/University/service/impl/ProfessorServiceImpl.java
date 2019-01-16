@@ -25,7 +25,7 @@ public class ProfessorServiceImpl implements ProfessorService {
     SubjectRepository subjectRepository;
 
     @Override
-    @Transactional(readOnly = false)
+   // @Transactional(readOnly = false)
     public Professor save(Professor professor) {
         return professorRepository.save(professor);
     }
@@ -62,19 +62,17 @@ public class ProfessorServiceImpl implements ProfessorService {
     }*/
 
     @Override
-    @Transactional(readOnly = false)
     public void delete(String professorId) {
         professorRepository.delete(professorId);
     }
 
     @Override
-    public Object profesorRanking() {
+    public Object getProfessorRanking() {
         return professorRepository.getProfessorRanking();
+
     }
 
-
 }
-
 
 
 

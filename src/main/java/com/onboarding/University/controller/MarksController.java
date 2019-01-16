@@ -1,7 +1,6 @@
 package com.onboarding.University.controller;
 import com.onboarding.University.dto.MarksDTO;
 import com.onboarding.University.entity.Marks;
-import com.onboarding.University.entity.MarksIdentity;
 import com.onboarding.University.service.MarksService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,53 +22,32 @@ public class MarksController {
         return new ResponseEntity<List<Marks>>(marksService.findAll(),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{marks_is}", method = RequestMethod.GET)
-    public ResponseEntity<String> getMarks(@PathVariable String marks_id){
-        Marks marks = new Marks();
-//        MarksIdentity marksIdentity= new MarksIdentity();
-//        marksIdentity.setStudentId(student_id);
-//        marksIdentity.setSubjectId(subject_id);
-        marks = marksService.findOne(marks_id);
-        return new ResponseEntity<String>(marks.getMarksId(),HttpStatus.OK);
+    @RequestMapping(value = "/{marks_id}", method = RequestMethod.GET)
+    public ResponseEntity<Marks> getMarks(@PathVariable String marks_id){
+        return new ResponseEntity<Marks>(marksService.findOne(marks_id),HttpStatus.OK);
     }
 
     @RequestMapping(value = "/delete/{marks_id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> removeMarks(@PathVariable String marks_id) {
-//        MarksIdentity marksIdentity= new MarksIdentity();
-//        marksIdentity.setStudentId(student_id);
-//        marksIdentity.setSubjectId(subject_id);
         marksService.delete(marks_id);
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<Marks> addMarks(@RequestBody MarksDTO marksDTO) {
-//        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
+    public ResponseEntity<String> addMarks(@RequestBody MarksDTO marksDTO) {
+
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
-//        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
-        return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
+        return new ResponseEntity<String>(marksCreated.getMarksId(),HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<Marks> updateMarks(@RequestBody MarksDTO marksDTO) {
-//        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
+    public ResponseEntity<String> updateMarks(@RequestBody MarksDTO marksDTO) {
+
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
-//        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
-        return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
-    }
-
-
-    @RequestMapping(value = "/getPercentageBySemester", method = RequestMethod.GET)
-    public ResponseEntity<Double> getPercentageBySemester(@PathVariable String studentId,@PathVariable int semester){
-        return new ResponseEntity<Double>(marksService.getPercentageBySemester(studentId, semester),HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/getPercentageTotal", method = RequestMethod.GET)
-    public ResponseEntity<Double> getPercentageTotal(@PathVariable String studentId){
-        return new ResponseEntity<Double>(marksService.getPercentageTotal(studentId),HttpStatus.OK);
+        return new ResponseEntity<String>(marksCreated.getMarksId(),HttpStatus.CREATED);
     }
 }

@@ -50,9 +50,4 @@ public class DepartmentController {
         Department departmentCreated = departmentService.save(department);
         return new ResponseEntity<String>(departmentCreated.getDepartmentId(),HttpStatus.CREATED);
     }
-
-    @RequestMapping(value = "/updateSemester", method = RequestMethod.GET)
-    public  void updateSemester(@RequestBody String studentId){
-        departmentService.updateSemester(studentId);
-    }
 }

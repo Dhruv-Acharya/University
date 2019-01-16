@@ -44,8 +44,8 @@ public class StudentController {
         Department department = departmentService.findOne(studentDTO.getDepartmentId());
 
         Student student = new Student();
-        BeanUtils.copyProperties(studentDTO, student);
         student.setDepartment(department);
+        BeanUtils.copyProperties(studentDTO, student);
         Student studentCreated = studentService.save(student);
         return new ResponseEntity<String>(studentCreated.getStudentId(),HttpStatus.CREATED);
     }

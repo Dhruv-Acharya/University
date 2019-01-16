@@ -1,10 +1,7 @@
 package com.onboarding.University.controller;
 
-import com.onboarding.University.dto.ProfessorDTO;
 import com.onboarding.University.dto.SubjectDTO;
-import com.onboarding.University.entity.Professor;
 import com.onboarding.University.entity.Subject;
-import com.onboarding.University.service.ProfessorService;
 import com.onboarding.University.service.SubjectService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/subject")
-public class SubjectController {
+public class SubjectController{
 
     @Autowired
     SubjectService subjectService;

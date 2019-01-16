@@ -22,7 +22,12 @@ public class StudentDTO {
         this.semester = semester;
     }
 
-    public StudentDTO() {
+    public String getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(String departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getStudentId() {
@@ -33,21 +38,6 @@ public class StudentDTO {
         this.studentId = studentId;
     }
 
-    public StudentDTO(String studentId, String studentName, String departmentId, int semester) {
-
-        this.studentId = studentId;
-        this.studentName = studentName;
-        this.departmentId = departmentId;
-        this.semester = semester;
-    }
-
-    public String getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(String departmentId) {
-        this.departmentId = departmentId;
-    }
     public String getStudentName() {
         return studentName;
     }
@@ -59,6 +49,7 @@ public class StudentDTO {
     @Override
     public String toString() {
         return "StudentDTO{" +
+                "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
                 ", departmentId='" + departmentId + '\'' +
                 '}';

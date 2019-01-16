@@ -10,11 +10,13 @@ import java.util.List;
 @Table(name=Professor.TABLE_NAME)
 public class Professor {
 
-    public static final String TABLE_NAME = "Professor";
+    public static final String TABLE_NAME = "PROFESSOR";
+    private static final String ID_COLUMN="ID";
 
     @Id
     @GeneratedValue(generator = "uuid")                 // hibernate
     @GenericGenerator(name = "uuid", strategy = "uuid2")  //hibernate
+    @Column(name =Professor.ID_COLUMN)
     private String professorId;
     @NotNull
     private String professorName;
