@@ -18,5 +18,7 @@ public interface ProfessorService {
 
         public void delete(String professorId);
 
+        public Object profesorRanking();
+
     }
 

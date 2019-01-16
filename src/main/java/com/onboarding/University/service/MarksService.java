@@ -12,4 +12,6 @@ public interface MarksService {
     Marks findOne(MarksIdentity id);
     Marks update(Marks marks);
     void delete(MarksIdentity id);
+    Double getPercentageBySemester(String studentId, int semester);
+    Double getPercentageTotal(String studentId);
 }

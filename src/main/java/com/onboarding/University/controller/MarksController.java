@@ -60,4 +60,15 @@ public class MarksController {
         Marks marksCreated = marksService.save(marks);
         return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
     }
+
+
+    @RequestMapping(value = "/getPercentageBySemester", method = RequestMethod.GET)
+    public ResponseEntity<Double> getPercentageBySemester(@PathVariable String studentId,@PathVariable int semester){
+        return new ResponseEntity<Double>(marksService.getPercentageBySemester(studentId, semester),HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getPercentageTotal", method = RequestMethod.GET)
+    public ResponseEntity<Double> getPercentageTotal(@PathVariable String studentId){
+        return new ResponseEntity<Double>(marksService.getPercentageTotal(studentId),HttpStatus.OK);
+    }
 }

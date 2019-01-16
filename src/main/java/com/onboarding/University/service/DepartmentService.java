@@ -11,4 +11,5 @@ public interface DepartmentService {
     Department findOne(String id);
     Department update(Department department);
     void delete(String id);
+    void updateSemester(String id);
 }
