@@ -5,15 +5,17 @@ public class MarksDTO {
     private String studentId;
     private String subjectId;
     private int marks;
+    private int semester;
 
     public MarksDTO() {
     }
 
-    public MarksDTO(String marksId, String studentId, String subjectId, int marks) {
+    public MarksDTO(String marksId, String studentId, String subjectId, int marks, int semester) {
         this.marksId = marksId;
         this.studentId = studentId;
         this.subjectId = subjectId;
         this.marks = marks;
+        this.semester = semester;
     }
 
     public String getMarksId() {
@@ -46,5 +48,13 @@ public class MarksDTO {
 
     public void setMarks(int marks) {
         this.marks = marks;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
     }
 }
