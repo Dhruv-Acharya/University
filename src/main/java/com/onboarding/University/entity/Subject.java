@@ -9,10 +9,12 @@ import java.util.List;
 @Table(name=Student.TABLE_NAME)
 public class Subject {
     public static final String TABLE_NAME="SUBJECT";
+    private static final String TABLE_ID = "ID";
 
     @Id
     @GeneratedValue(generator = "uuid")                 // hibernate
     @GenericGenerator(name = "uuid", strategy = "uuid2")  //hibernate
+    @Column(name = Subject.TABLE_ID)
     private String subjectId;
 
     private String  subjectName;
@@ -23,10 +25,10 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
-//    @OneToMany(
-//            mappedBy = "subject"
-//    )
-//    private List<Marks> marks;
+    @OneToMany(
+            mappedBy = "subject"
+    )
+    private List<Marks> marks;
 
     public Subject() {
     }

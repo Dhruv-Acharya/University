@@ -1,8 +1,10 @@
 package com.onboarding.University.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name=Student.TABLE_NAME)
@@ -25,9 +27,9 @@ public class Student {
     @ManyToOne
     @JoinColumn(name="department_id", referencedColumnName = "ID")
     private Department department;
-//    @OneToMany
-//    @JsonBackReference
-//    private List<Marks> marks;
+    @OneToMany
+    @JsonBackReference
+    private List<Marks> marks;
 
     public Student() {
     }
