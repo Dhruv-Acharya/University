@@ -67,6 +67,11 @@ public class ProfessorServiceImpl implements ProfessorService {
         professorRepository.delete(professorId);
     }
 
+    @Override
+    public Object profesorRanking() {
+        return professorRepository.getProfessorRanking();
+    }
+
 
 }
 

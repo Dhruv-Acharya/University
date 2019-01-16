@@ -10,7 +10,7 @@ import java.util.List;
 public interface ProfessorRepository extends CrudRepository<Professor,String> {
 
 
-//    @Query(name = "professorRanking", value = "select AVG(b.marks) from subject a inner join marks b on a.subject_id = b.subject_id group by a.professor_id")
-//    List<Double> getProfessorRanking();
+    @Query(name = "professorRanking", value = "select a.marks) as marks from subject a inner join marks b on a.subject_id = b.subject_id group by a.professor_id order by marks desc")
+    Object getProfessorRanking();
 }
 

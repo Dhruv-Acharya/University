@@ -48,6 +48,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public void updateSemester(String id) {
+         departmentRepository.updateSemesterStudent(id);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public Department update(Department department) {
         return departmentRepository.save(department);

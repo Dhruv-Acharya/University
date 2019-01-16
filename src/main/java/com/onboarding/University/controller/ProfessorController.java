@@ -54,4 +54,9 @@ public class ProfessorController {
         Professor professorCreated = professorService.save(professor);
         return new ResponseEntity<String>(professorCreated.getProfessorId(),HttpStatus.CREATED);
     }
+
+    @RequestMapping(value = "/professorRanking", method = RequestMethod.GET)
+    public ResponseEntity<Object> getProfessorRanking(){
+        return new ResponseEntity<Object>(professorService.profesorRanking(),HttpStatus.OK);
+    }
 }

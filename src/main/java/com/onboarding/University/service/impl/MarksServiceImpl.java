@@ -48,6 +48,16 @@ public class MarksServiceImpl implements MarksService {
     }
 
     @Override
+    public Double getPercentageBySemester(String studentId, int semester) {
+        return marksRepository.getStudentScoreBySem(studentId, semester);
+    }
+
+    @Override
+    public Double getPercentageTotal(String studentId) {
+        return marksRepository.getStudentScoreAllSem(studentId);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public Marks update(Marks marks) {
         return marksRepository.save(marks);
