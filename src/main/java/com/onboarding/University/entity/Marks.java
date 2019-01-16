@@ -20,7 +20,7 @@ public class Marks {
     private String marksId;
     @ManyToOne
     private Student student;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "subject_id")
     private Subject subject;
     private int semester;

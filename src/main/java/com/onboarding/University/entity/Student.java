@@ -1,5 +1,6 @@
 package com.onboarding.University.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
@@ -26,6 +27,7 @@ public class Student {
     @ManyToOne
     private Department department;
     @OneToMany
+    @JsonBackReference
     private List<Marks> marks;
 
     public Student() {
