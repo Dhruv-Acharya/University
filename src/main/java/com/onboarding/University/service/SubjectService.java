@@ -11,11 +11,7 @@ public interface SubjectService {
 
     //public List<Subject> findByFistName(String firstName);
 
-    public boolean exists(String subjectId);
-
     public List<Subject> findAll();
-
-    public long count();
 
     public void delete(String subjectId);
 

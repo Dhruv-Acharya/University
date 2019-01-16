@@ -1,10 +1,26 @@
 package com.onboarding.University.dto;
 
+import com.onboarding.University.entity.Department;
+import com.onboarding.University.entity.Marks;
+
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
+
 public class StudentDTO {
 
     private String studentId;
     private String studentName;
     private String departmentId;
+    private int semester;
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
 
     public String getDepartmentId() {
         return departmentId;

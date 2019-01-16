@@ -1,5 +1,6 @@
 package com.onboarding.University.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,10 +18,13 @@ public class Department {
     private String departmentId;
     private String departmentName;
     @OneToMany(mappedBy = "department")
+    @JsonBackReference
     private List<Student> student;
     @OneToMany
+    @JsonBackReference
     private List<Subject> subject;
     @OneToMany(mappedBy = "primaryDepartment")
+    @JsonBackReference
     private List<Professor> professor;
 
     public Department() {
@@ -63,5 +67,13 @@ public class Department {
 
     public void setSubject(List<Subject> subject) {
         this.subject = subject;
+    }
+
+    public List<Professor> getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(List<Professor> professor) {
+        this.professor = professor;
     }
 }

@@ -16,8 +16,6 @@ public interface ProfessorService {
 
         public List<Professor> findAll();
 
-        //public long count();
-
         public void delete(String professorId);
 
     }

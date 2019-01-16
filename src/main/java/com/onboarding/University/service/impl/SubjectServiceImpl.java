@@ -1,13 +1,15 @@
 package com.onboarding.University.service.impl;
 
 import com.onboarding.University.entity.Subject;
+import com.onboarding.University.repository.DepartmentRepository;
+import com.onboarding.University.repository.ProfessorRepository;
 import com.onboarding.University.repository.SubjectRepository;
 import com.onboarding.University.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

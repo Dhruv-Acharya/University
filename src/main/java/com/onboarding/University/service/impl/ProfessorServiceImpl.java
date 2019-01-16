@@ -2,6 +2,7 @@ package com.onboarding.University.service.impl;
 
 import com.onboarding.University.entity.Professor;
 import com.onboarding.University.repository.ProfessorRepository;
+import com.onboarding.University.repository.SubjectRepository;
 import com.onboarding.University.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
