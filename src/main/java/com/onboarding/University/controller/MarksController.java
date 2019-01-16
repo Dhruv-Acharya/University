@@ -23,40 +23,41 @@ public class MarksController {
         return new ResponseEntity<List<Marks>>(marksService.findAll(),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{student_id}/{subject_id}", method = RequestMethod.GET)
-    public ResponseEntity<Marks> getMarks(@PathVariable String student_id,@PathVariable String subject_id){
-        MarksIdentity marksIdentity= new MarksIdentity();
-        marksIdentity.setStudentId(student_id);
-        marksIdentity.setSubjectId(subject_id);
-        marksService.delete(marksIdentity);
-        return new ResponseEntity<Marks>(marksService.findOne(marksIdentity),HttpStatus.OK);
+    @RequestMapping(value = "/{marks_is}", method = RequestMethod.GET)
+    public ResponseEntity<String> getMarks(@PathVariable String marks_id){
+        Marks marks = new Marks();
+//        MarksIdentity marksIdentity= new MarksIdentity();
+//        marksIdentity.setStudentId(student_id);
+//        marksIdentity.setSubjectId(subject_id);
+        marks = marksService.findOne(marks_id);
+        return new ResponseEntity<String>(marks.getMarksId(),HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete/{student_id}/{subject_id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> removeMarks(@PathVariable String student_id,@PathVariable String subject_id) {
-        MarksIdentity marksIdentity= new MarksIdentity();
-        marksIdentity.setStudentId(student_id);
-        marksIdentity.setSubjectId(subject_id);
-        marksService.delete(marksIdentity);
+    @RequestMapping(value = "/delete/{marks_id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> removeMarks(@PathVariable String marks_id) {
+//        MarksIdentity marksIdentity= new MarksIdentity();
+//        marksIdentity.setStudentId(student_id);
+//        marksIdentity.setSubjectId(subject_id);
+        marksService.delete(marks_id);
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<Marks> addMarks(@RequestBody MarksDTO marksDTO) {
-        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
+//        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
-        marks.setMarksIdentity(marksIdentity);
+//        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
         return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<Marks> updateMarks(@RequestBody MarksDTO marksDTO) {
-        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
+//        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
-        marks.setMarksIdentity(marksIdentity);
+//        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
         return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
     }
