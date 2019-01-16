@@ -1,6 +1,7 @@
 package com.onboarding.University.controller;
 import com.onboarding.University.dto.MarksDTO;
 import com.onboarding.University.entity.Marks;
+import com.onboarding.University.entity.MarksIdentity;
 import com.onboarding.University.service.MarksService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,20 +35,22 @@ public class MarksController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ResponseEntity<String> addMarks(@RequestBody MarksDTO marksDTO) {
-
+    public ResponseEntity<Marks> addMarks(@RequestBody MarksDTO marksDTO) {
+        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
+        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
-        return new ResponseEntity<String>(marksCreated.getMarksId(),HttpStatus.CREATED);
+        return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateMarks(@RequestBody MarksDTO marksDTO) {
-
+    public ResponseEntity<Marks> updateMarks(@RequestBody MarksDTO marksDTO) {
+        MarksIdentity marksIdentity = new MarksIdentity(marksDTO.getStudentId(),marksDTO.getSubjectId());
         Marks marks = new Marks();
         BeanUtils.copyProperties(marksDTO, marks);
+        marks.setMarksIdentity(marksIdentity);
         Marks marksCreated = marksService.save(marks);
-        return new ResponseEntity<String>(marksCreated.getMarksId(),HttpStatus.CREATED);
+        return new ResponseEntity<Marks>(marksCreated,HttpStatus.CREATED);
     }
 }

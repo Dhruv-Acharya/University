@@ -26,28 +26,28 @@ public class Student {
     private int semester;
     @ManyToOne
     private Department department;
-    @OneToMany
-    @JsonBackReference
-    private List<Marks> marks;
+//    @OneToMany
+//    @JsonBackReference
+//    private List<Marks> marks;
 
     public Student() {
     }
 
-    public Student(String studentId, String studentName, int semester, Department department, List<Marks> marks) {
+    public Student(String studentId, String studentName, int semester, Department department) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.semester = semester;
         this.department = department;
-        this.marks = marks;
+//        this.marks = marks;
     }
-
-    public List<Marks> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<Marks> marks) {
-        this.marks = marks;
-    }
+//
+//    public List<Marks> getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(List<Marks> marks) {
+//        this.marks = marks;
+//    }
 
     public String getStudentId() {
         return studentId;

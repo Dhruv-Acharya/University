@@ -18,29 +18,29 @@ public class Subject {
     @ManyToOne
     @JoinColumn(name = "professor_id")
     private Professor professor;
-    @OneToMany(
-            mappedBy = "subject"
-    )
-    private List<Marks> marks;
+//    @OneToMany(
+//            mappedBy = "subject"
+//    )
+//    private List<Marks> marks;
 
     public Subject() {
     }
 
-    public Subject(String subjectId, String subjectName, Department department, Professor professor, List<Marks> marks) {
+    public Subject(String subjectId, String subjectName, Department department, Professor professor) {
         this.subjectId = subjectId;
         this.subjectName = subjectName;
         this.department = department;
         this.professor = professor;
-        this.marks = marks;
+//        this.marks = marks;
     }
 
-    public List<Marks> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<Marks> marks) {
-        this.marks = marks;
-    }
+//    public List<Marks> getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(List<Marks> marks) {
+//        this.marks = marks;
+//    }
 
     public String getSubjectId() {
         return subjectId;
